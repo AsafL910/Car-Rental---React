@@ -9,9 +9,8 @@ const UserInputText = ({
   extraInfo,
   type,
   onChange,
-  input
+  input,
 }) => {
-
   return (
     <Input>
       <Input.Label>
@@ -22,7 +21,7 @@ const UserInputText = ({
         type={type ? type : "text"}
         placeholder={placeholder}
         onChange={(newInput) => {
-            onChange(newInput.target.value)
+          onChange(newInput.target.value);
         }}
         isValid={validationFunc(input)}
       />

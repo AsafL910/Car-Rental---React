@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form as Input } from 'react-bootstrap' 
+import { Form as Input } from "react-bootstrap";
 
 const UserInputFile = ({
   icon,
@@ -7,25 +7,25 @@ const UserInputFile = ({
   extraInfo,
   validationFunc,
   input,
-  onChange
+  onChange,
 }) => {
-return (
+  return (
     <Input>
       <Input.Label>
         {icon}
         {text}
       </Input.Label>
       <Input.Control
-        type='file'
+        type="file"
         files={input}
         onChange={(e) => {
           onChange(e.target.files[0]);
         }}
         isValid={validationFunc(input)}
-        />
-      <Input.Text className='text-muted'>{extraInfo}</Input.Text>
+      />
+      <Input.Text className="text-muted">{extraInfo}</Input.Text>
     </Input>
   );
 };
 
-export default UserInputFile
+export default UserInputFile;
