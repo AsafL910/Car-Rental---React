@@ -5,11 +5,11 @@ const UserInputFile = ({
   icon,
   text,
   extraInfo,
-  validationFunc
+  validationFunc,
+  input,
+  onChange
 }) => {
-  const [input, setInput] = useState(new File([],'HelloThere.png'));
-
-  return (
+return (
     <Input>
       <Input.Label>
         {icon}
@@ -18,8 +18,8 @@ const UserInputFile = ({
       <Input.Control
         type='file'
         files={input}
-        onInput={(e) => {
-          setInput(e.target.files[0]);
+        onChange={(e) => {
+          onChange(e.target.files[0]);
         }}
         isValid={validationFunc(input)}
         />

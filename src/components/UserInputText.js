@@ -8,8 +8,9 @@ const UserInputText = ({
   validationFunc,
   extraInfo,
   type,
+  onChange,
+  input
 }) => {
-  const [input, setInput] = useState("");
 
   return (
     <Input>
@@ -20,9 +21,8 @@ const UserInputText = ({
       <Input.Control
         type={type ? type : "text"}
         placeholder={placeholder}
-        value={input}
-        onInput={(e) => {
-          setInput(e.target.value);
+        onChange={(newInput) => {
+            onChange(newInput.target.value)
         }}
         isValid={validationFunc(input)}
       />
