@@ -3,7 +3,7 @@ import Home from "./components/pages/Home.js";
 import SignUp from "./components/pages/SignUp.js";
 import SignIn from "./components/pages/SignIn.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ManageUsers from "./components/pages/ManageUsers.js";
+import ManageObjects from "./components/pages/ManageObjects.js";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signIn" element={<SignIn/>}/>
-          <Route path='/admin/manageUsers' element={<ManageUsers/>}/>
+          <Route path='/admin/manageUsers' element={<ManageObjects/>}/>
         </Routes>
       </Router>
     </div>

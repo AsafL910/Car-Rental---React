@@ -3,55 +3,37 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { FaSave, FaTrash } from "react-icons/fa";
 
-const EditableTableRow = ({ startUser, edit, editTrue, editFalse }) => {
+const EditableTableRow = ({ startObject, edit, editTrue, editFalse, reload }) => {
   
-  const [user, setUser] = useState(startUser);
-  const updateUser = async (user) => {
-    await fetch(`http://localhost:5000/users/${user.id}`, {
+  const [object, setObject] = useState(startObject);
+  const updateUser = async (object) => {
+    await fetch(`http://localhost:5000/users/${object.id}`, {
       method: "PUT",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(object),
     });
     editFalse();
   };
 
+  const deleteUser = async (object) => {
+    await fetch(`http://localhost:5000/users/${object.id}`, {
+        method: "DELETE"
+      });
+      reload();
+  }
+
   return (
-    <tr key={user.id} onClick={() => editTrue()}>
-      <EditableTableField
-        onChange={(input) => setUser({ ...user, username: input })}
-        value={user.username}
-        edit={edit}
-      />
-      <EditableTableField
-        onChange={(input) => setUser({ ...user, name: input })}
-        value={user.name}
-        edit={edit}
-      />
-      <EditableTableField
-        onChange={(input) => setUser({ ...user, password: input })}
-        value={user.password}
-        edit={edit}
-      />
-      <EditableTableField
-        onChange={(input) => setUser({ ...user, birthDate: input })}
-        value={user.birthDate}
-        edit={edit}
-      />
-      <EditableTableField
-        onChange={(input) => setUser({ ...user, gender: input })}
-        value={user.gender}
-        edit={edit}
-      />
-      <EditableTableField
-        onChange={(input) => setUser({ ...user, email: input })}
-        value={user.email}
-        edit={edit}
-      />
-      <EditableTableField
-        onChange={(input) => setUser({ ...user, status: input })}
-        value={user.status}
-        edit={edit}
-      />
+      
+    <tr key={object.id} onClick={() => editTrue()}>
+        {Object.keys(object).map((property, index) => ( (typeof object[property]  === 'string' ) &&
+        <EditableTableField
+          key={index}
+          value={object[property]}
+          edit={edit}
+          onChange={(input) => setObject({ ...object, [property]: input })}
+        />
+      ))}
+      
       { edit &&
         <div>
           <Button
@@ -62,7 +44,7 @@ const EditableTableRow = ({ startUser, edit, editTrue, editFalse }) => {
               borderRadius: "15px",
             }}
             cursor="pointer"
-            onClick={() => updateUser(user)}
+            onClick={() => updateUser(object)}
           >
             <FaSave /> עדכון משתמש
           </Button>
@@ -74,7 +56,7 @@ const EditableTableRow = ({ startUser, edit, editTrue, editFalse }) => {
               borderRadius: "15px",
             }}
             cursor="pointer"
-            onClick={() => updateUser(user)}
+            onClick={() => deleteUser(object)}
           >
             <FaTrash /> מחיקה
           </button>
