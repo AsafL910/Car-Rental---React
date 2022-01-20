@@ -8,7 +8,7 @@
       "gender": "זכר",
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
-      "status": "מנהל",
+      "status": "מנהלת",
       "id": 1
     },
     {
@@ -30,7 +30,7 @@
       "gender": "זכר",
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
-      "status": "מנהל",
+      "status": "מנהלת",
       "id": 3
     },
     {
@@ -41,7 +41,7 @@
       "gender": "זכר",
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
-      "status": "מנהל",
+      "status": "אורח",
       "id": 4
     },
     {
@@ -52,7 +52,7 @@
       "gender": "זכר",
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
-      "status": "מנהל",
+      "status": "מנהלת",
       "id": 5
     },
     {
@@ -63,8 +63,74 @@
       "gender": "זכר",
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
-      "status": "מנהל",
+      "status": "אורח",
       "id": 6
+    },
+    {
+      "username": "edfdsfdfdf",
+      "name": "asaf",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "efefef@ewssfs.dssdsdsds",
+      "imageFile": {},
+      "status": "מנהלת",
+      "id": 7
+    },
+    {
+      "username": "edfdsfdfdf",
+      "name": "asaf",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "efefef@ewssfs.dssdsdsds",
+      "imageFile": {},
+      "status": "אורח",
+      "id": 8
+    },
+    {
+      "username": "edfdsfdfdf",
+      "name": "asaf",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "efefef@ewssfs.dssdsdsds",
+      "imageFile": {},
+      "status": "מנהלת",
+      "id": 9
+    },
+    {
+      "username": "edfdsfdfdf",
+      "name": "asaf",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "efefef@ewssfs.dssdsdsds",
+      "imageFile": {},
+      "status": "אורח",
+      "id": 10
+    },
+    {
+      "username": "edfdsfdfdf",
+      "name": "asaf",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "efefef@ewssfs.dssdsdsds",
+      "imageFile": {},
+      "status": "מנהלת",
+      "id": 11
+    },
+    {
+      "username": "edfdsfdfdf",
+      "name": "asaf",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "efefef@ewssfs.dssdsdsds",
+      "imageFile": {},
+      "status": "אורח",
+      "id": 12
     }
   ],
   "posts": [
@@ -75,11 +141,6 @@
     },
     {
       "id": 2,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "id": 3,
       "title": "json-server",
       "author": "typicode"
     }

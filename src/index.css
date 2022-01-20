@@ -12,3 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+Table {
+  margin: 2%;
+  max-width: 95vw;
+}

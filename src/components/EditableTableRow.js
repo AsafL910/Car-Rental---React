@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { FaSave, FaTrash } from "react-icons/fa";
 
-const EditableTableRow = ({ startObject, edit, editTrue, editFalse, reload }) => {
+const EditableTableRow = ({ startObject, edit, editTrue, editFalse, reload, fetchLink }) => {
   
   const [object, setObject] = useState(startObject);
   const updateUser = async (object) => {
-    await fetch(`http://localhost:5000/users/${object.id}`, {
+    await fetch(`${fetchLink}/${object.id}`, {
       method: "PUT",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(object),
@@ -16,7 +16,7 @@ const EditableTableRow = ({ startObject, edit, editTrue, editFalse, reload }) =>
   };
 
   const deleteUser = async (object) => {
-    await fetch(`http://localhost:5000/users/${object.id}`, {
+    await fetch(`${fetchLink}/${object.id}`, {
         method: "DELETE"
       });
       reload();
@@ -46,7 +46,7 @@ const EditableTableRow = ({ startObject, edit, editTrue, editFalse, reload }) =>
             cursor="pointer"
             onClick={() => updateUser(object)}
           >
-            <FaSave /> עדכון משתמש
+            <FaSave /> עדכון 
           </Button>
           <button className="btn btn-danger"
             style={{

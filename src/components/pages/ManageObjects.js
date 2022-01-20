@@ -1,21 +1,21 @@
-import { Table } from "react-bootstrap";
+import { Table, Button, ButtonGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import EditableTableRow from "../EditableTableRow.js";
+import { FaEdit, FaPlus, FaSave } from "react-icons/fa";
 
-const ManageObjects = () => {
+const ManageObjects = ({ fetchLink }) => {
   const [edit, setEdit] = useState(false);
   const [objects, setObjects] = useState([]);
   useEffect(() => {
-    const changeUsers = async () => {
-      setObjects(await fetchUsers());
+    const changeObjects = async () => {
+      setObjects(await fetchObjects());
     };
-    changeUsers();
+    changeObjects();
   }, []);
-  const fetchUsers = async () =>
-    await (await fetch("http://localhost:5000/users")).json();
+  const fetchObjects = async () => await (await fetch(fetchLink)).json();
   return (
-    <div style={{ margin: 100 }}>
-      <Table striped bordered hover>
+    <div style={{ height: "10vh"}}>
+      <Table striped bordered hover style={{ overflow: "auto"}}>
         <thead>
           <tr>
             {Object.getOwnPropertyNames(
@@ -24,7 +24,12 @@ const ManageObjects = () => {
               (key) =>
                 typeof objects[0][key] === "string" && <th key={key}>{key}</th>
             )}
-            {edit && <th>עדכון</th>}
+            {edit && (
+              <th>
+                {" "}
+                עריכה <FaEdit />
+              </th>
+            )}
           </tr>
         </thead>
         <tbody>
@@ -35,11 +40,38 @@ const ManageObjects = () => {
               edit={edit}
               editTrue={() => setEdit(true)}
               editFalse={() => setEdit(false)}
-              reload={async () => setObjects(await fetchUsers())}
+              reload={async () => setObjects(await fetchObjects())}
+              fetchLink={fetchLink}
             />
           ))}
         </tbody>
       </Table>
+      <ButtonGroup
+        size="lg"
+        style={{ position: "fixed", left: 30, bottom: 30 }}
+      >
+        <Button
+          className="btn-secondary"
+          onClick={() => setEdit(!edit)}
+          style={{
+            borderRadius: 10,
+            margin: 10,
+            boxShadow: "6px 6px 15px 1px black",
+          }}
+        >
+          {edit ? <FaSave /> : <FaEdit />}
+        </Button>
+        <Button
+          className="btn-secondary"
+          style={{
+            borderRadius: 10,
+            margin: 10,
+            boxShadow: "6px 6px 15px 1px black",
+          }}
+        >
+          <FaPlus />
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };
