@@ -1,33 +1,36 @@
 {
   "users": [
     {
-      "username": "hsdgshdgd",
-      "name": "sdsds",
+      "username": "edfdsfdfdf",
+      "name": "asaf",
       "password": "hgdsjfgefgdsf",
       "birthDate": "2021-12-26T09:29:44.000Z",
       "gender": "זכר",
-      "email": "sdsds@ewssfs.ds",
+      "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
+      "isAdmin": true,
       "id": 1
     },
     {
-      "username": "hsdgshdgd",
-      "name": "sdsds",
+      "username": "SIBONI123",
+      "name": "שקד",
       "password": "hgdsjfgefgdsf",
       "birthDate": "2021-12-26T09:29:44.000Z",
       "gender": "זכר",
       "email": "sdsds@ewssfs.ds",
       "imageFile": {},
+      "isAdmin": false,
       "id": 2
     },
     {
-      "username": "hsdgshdgd",
-      "name": "sdsds",
+      "username": "hsdgshsddsdgd",
+      "name": "dolev",
       "password": "hgdsjfgefgdsf",
       "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "sdsds@ewssfs.ds",
+      "gender": "נקבה",
+      "email": "sdsdsdfsfdsfd@ewssfs.ds",
       "imageFile": {},
+      "isAdmin": false,
       "id": 3
     }
   ],

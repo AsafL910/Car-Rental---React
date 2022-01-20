@@ -59,6 +59,7 @@ const SignUp = () => {
             gender: gender,
             email: email,
             imageFile: imageFile,
+            isAdmin: false
           }),
         })
       : alert("אנא וודא שכל הפרטים נכונים");
