@@ -11,7 +11,8 @@ const UserInputRadio = ({ options, icon, text, onChange }) => {
         <Input.Check
           inline
           key={index}
-          onSelect={onChange(option)}
+          value={option}
+          onChange={(newInput) => onChange(newInput.target.value)}
           type="radio"
           name="gender"
           label={option}

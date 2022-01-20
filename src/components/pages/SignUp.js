@@ -7,6 +7,21 @@ import UserInputRadio from "../UserInputRadio.js";
 import UserInputFile from "../UserInputFile.js";
 import { useState } from "react";
 
+const validateUsername = (username) => username.length < 20 && username;
+const validateName = (name) => !/\d/.test(name) && name;
+const validatePassword = (password) => password.length > 8;
+const validateGender = (gender) => gender;
+const validateEmail = (email) =>
+  /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email) && email;
+const validateImage = (file) => !file || file.size / 1024 / 1024 < 10;
+const validateAll = (username, name, password, gender, email, image) =>
+  validateUsername(username) &&
+  validateName(name) &&
+  validatePassword(password) &&
+  validateGender(gender) &&
+  validateEmail(email) &&
+  validateImage(image);
+
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -17,15 +32,17 @@ const SignUp = () => {
   const [imageFile, setImageFile] = useState(new File([], "Temp.png"));
 
   const submitForm = () =>
-    console.log({
-      username: username,
-      name: name,
-      password: password,
-      birthDate: birthDate,
-      gender: gender,
-      email: email,
-      imageFile: imageFile,
-    });
+    validateAll(username, name, password, gender, email, imageFile)
+      ? console.log({
+          username: username,
+          name: name,
+          password: password,
+          birthDate: birthDate,
+          gender: gender,
+          email: email,
+          imageFile: imageFile,
+        })
+      : alert("אנא וודא שכל הפרטים נכונים");
   return (
     <Card
       style={{ width: 400, padding: 20, margin: 100, alignItems: "center" }}
@@ -36,7 +53,7 @@ const SignUp = () => {
         text="שם מלא:"
         placeholder="הכנס שם מלא"
         icon={FaUserTag}
-        validationFunc={(text) => !/\d/.test(text) && text}
+        validationFunc={validateName}
         input={name}
         onChange={(text) => setName(text)}
       />
@@ -45,7 +62,7 @@ const SignUp = () => {
         text="שם משתמש:"
         placeholder="הכנס שם משתמש"
         icon={FaUser}
-        validationFunc={(text) => text}
+        validationFunc={validateUsername}
         input={username}
         onChange={(text) => setUsername(text)}
       />
@@ -55,7 +72,7 @@ const SignUp = () => {
         placeholder="הכנס סיסמא"
         icon={FaKey}
         extraInfo="על הסיסמא להיות מעל 8 תווים"
-        validationFunc={(text) => text.length > 8}
+        validationFunc={validatePassword}
         input={password}
         onChange={(text) => setPassword(text)}
       />
@@ -75,16 +92,14 @@ const SignUp = () => {
         text="אימייל:"
         placeholder="הכנס אימייל"
         extraInfo="על כתובת האימייל להיות תקנית"
-        validationFunc={(email) =>
-          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)
-        }
+        validationFunc={validateEmail}
         input={email}
         onChange={(text) => setEmail(text)}
       />
       <UserInputFile
         text="תמונה:"
         extraInfo="גודל מקסימלי לקובץ 10mb"
-        validationFunc={(file) => file.size / 1024 / 1024 < 10}
+        validationFunc={validateImage}
         onChange={(newImage) => setImageFile(newImage)}
         input={imageFile}
       />
