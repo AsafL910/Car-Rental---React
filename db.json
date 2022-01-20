@@ -1,4 +1,36 @@
 {
+  "users": [
+    {
+      "username": "hsdgshdgd",
+      "name": "sdsds",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "sdsds@ewssfs.ds",
+      "imageFile": {},
+      "id": 1
+    },
+    {
+      "username": "hsdgshdgd",
+      "name": "sdsds",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "sdsds@ewssfs.ds",
+      "imageFile": {},
+      "id": 2
+    },
+    {
+      "username": "hsdgshdgd",
+      "name": "sdsds",
+      "password": "hgdsjfgefgdsf",
+      "birthDate": "2021-12-26T09:29:44.000Z",
+      "gender": "זכר",
+      "email": "sdsds@ewssfs.ds",
+      "imageFile": {},
+      "id": 3
+    }
+  ],
   "posts": [
     {
       "id": 1,
