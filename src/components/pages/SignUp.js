@@ -1,4 +1,4 @@
-import { FaUser, FaUserTag, FaKey, FaCalendarAlt } from "react-icons/fa";
+import { FaUser, FaUserTag, FaKey, FaCalendarAlt, FaEnvelope } from "react-icons/fa";
 import { BsGenderAmbiguous } from "react-icons/bs";
 import UserInputText from "../UserInputText.js";
 import DatePicker from "../DatePicker.js";
@@ -31,7 +31,16 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [imageFile, setImageFile] = useState(new File([], "Temp.png"));
 
-  const submitForm = () =>
+const resetForm = () => {
+  setName("")
+      setUsername("")
+      setPassword("")
+      setEmail("")
+      setBirthDate(new Date())
+      setImageFile(new File([], "Temp.png"))
+}
+
+  const submitForm = () => {
     validateAll(username, name, password, gender, email, imageFile)
       ? console.log({
           username: username,
@@ -43,6 +52,8 @@ const SignUp = () => {
           imageFile: imageFile,
         })
       : alert("אנא וודא שכל הפרטים נכונים");
+      
+  }
   return (
     <Card
       style={{ width: 400, padding: 20, margin: 100, alignItems: "center" }}
@@ -52,7 +63,7 @@ const SignUp = () => {
         type="text"
         text="שם מלא:"
         placeholder="הכנס שם מלא"
-        icon={FaUserTag}
+        icon={<FaUserTag/>}
         validationFunc={validateName}
         input={name}
         onChange={(text) => setName(text)}
@@ -61,7 +72,7 @@ const SignUp = () => {
         type="text"
         text="שם משתמש:"
         placeholder="הכנס שם משתמש"
-        icon={FaUser}
+        icon={<FaUser/>}
         validationFunc={validateUsername}
         input={username}
         onChange={(text) => setUsername(text)}
@@ -70,7 +81,7 @@ const SignUp = () => {
         type="password"
         text="סיסמא:"
         placeholder="הכנס סיסמא"
-        icon={FaKey}
+        icon={<FaKey/>}
         extraInfo="על הסיסמא להיות מעל 8 תווים"
         validationFunc={validatePassword}
         input={password}
@@ -78,18 +89,19 @@ const SignUp = () => {
       />
       <DatePicker
         title="תאריך לידה:"
-        icon={FaCalendarAlt}
+        icon={<FaCalendarAlt/>}
         date={birthDate}
         onChange={(newDate) => setBirthDate(newDate)}
       />
       <UserInputRadio
         text="מין:"
-        icon={BsGenderAmbiguous}
+        icon={<BsGenderAmbiguous/>}
         options={["זכר", "נקבה"]}
         onChange={(gender) => setGender(gender)}
       />
       <UserInputText
         text="אימייל:"
+        icon={<FaEnvelope/>}
         placeholder="הכנס אימייל"
         extraInfo="על כתובת האימייל להיות תקנית"
         validationFunc={validateEmail}

@@ -23,6 +23,11 @@ const myStyle = {marginLeft: 10, marginRight: 10};
             הרשמה
           </Link>
         </Nav.Item>
+        <Nav.Item>
+          <Link style={myStyle} to="/signIn">
+            התחברות
+          </Link>
+        </Nav.Item>
       </Nav>
     </ReactNavbar>
   );
