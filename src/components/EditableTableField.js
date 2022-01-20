@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 
 export const EditableTableField = ({ value, onChange, edit }) => {
-
   return (
     <td>
       {edit ? (
@@ -11,7 +10,7 @@ export const EditableTableField = ({ value, onChange, edit }) => {
           onChange={(input) => onChange(input.target.value)}
         />
       ) : (
-        <span>{ value }</span>
+        <span>{value}</span>
       )}
     </td>
   );

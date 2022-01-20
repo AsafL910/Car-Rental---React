@@ -1,9 +1,10 @@
 import EditableTableField from "./EditableTableField";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import { FaSave, FaTrash } from "react-icons/fa";
 
-const EditableTableRow = ({ startUser }) => {
-    const [edit, setEdit] = useState(false);
+const EditableTableRow = ({ startUser, edit, editTrue, editFalse }) => {
+  
   const [user, setUser] = useState(startUser);
   const updateUser = async (user) => {
     await fetch(`http://localhost:5000/users/${user.id}`, {
@@ -11,11 +12,11 @@ const EditableTableRow = ({ startUser }) => {
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(user),
     });
-    setEdit(false);
+    editFalse();
   };
 
   return (
-    <tr key={user.id} onClick={()=>setEdit(true)}>
+    <tr key={user.id} onClick={() => editTrue()}>
       <EditableTableField
         onChange={(input) => setUser({ ...user, username: input })}
         value={user.username}
@@ -46,10 +47,39 @@ const EditableTableRow = ({ startUser }) => {
         value={user.email}
         edit={edit}
       />
-      <td>{user.isAdmin ? "כן" : "לא"}</td>
-      <button className="btn btn-primary" style={{}} cursor="pointer" onClick={() => updateUser(user)}>
-        עדכן משתמש
-      </button>
+      <EditableTableField
+        onChange={(input) => setUser({ ...user, status: input })}
+        value={user.status}
+        edit={edit}
+      />
+      { edit &&
+        <div>
+          <Button
+            style={{
+              background: "#0d6efd",
+              color: "white",
+              margin: 5,
+              borderRadius: "15px",
+            }}
+            cursor="pointer"
+            onClick={() => updateUser(user)}
+          >
+            <FaSave /> עדכון משתמש
+          </Button>
+          <button className="btn btn-danger"
+            style={{
+              background: "#dc3545",
+              color: "white",
+              margin: 5,
+              borderRadius: "15px",
+            }}
+            cursor="pointer"
+            onClick={() => updateUser(user)}
+          >
+            <FaTrash /> מחיקה
+          </button>
+        </div>
+      }
     </tr>
   );
 };

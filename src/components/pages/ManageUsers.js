@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import EditableTableRow from "../EditableTableRow.js";
 
 const ManageUsers = () => {
+    const [edit, setEdit] = useState(false);
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const changeUsers = async () => {
@@ -23,8 +24,8 @@ const ManageUsers = () => {
             <th>תאריך לידה</th>
             <th>מין</th>
             <th>מייל</th>
-            <th>מנהל</th>
-            <th>עדכון</th>
+            <th>סטטוס</th>
+            {edit && <th>עדכון</th>}
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,9 @@ const ManageUsers = () => {
             <EditableTableRow
               key={user.id}
               startUser={user}
+              edit={edit}
+              editTrue={()=>setEdit(true)}
+              editFalse={()=>setEdit(false)}
             />
           ))}
         </tbody>

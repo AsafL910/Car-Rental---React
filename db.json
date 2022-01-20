@@ -8,7 +8,7 @@
       "gender": "זכר",
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
-      "isAdmin": true,
+      "status": "מנהל",
       "id": 1
     },
     {
@@ -19,7 +19,7 @@
       "gender": "זכר",
       "email": "sdsds@ewssfs.ds",
       "imageFile": {},
-      "isAdmin": false,
+      "status": "משתמש",
       "id": 2
     },
     {
@@ -27,11 +27,22 @@
       "name": "dolev",
       "password": "hgdsjfgefgdsf",
       "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "נקבה",
+      "gender": "זכר",
       "email": "sdsdsdfsfdsfd@ewssfs.ds",
       "imageFile": {},
-      "isAdmin": false,
+      "status": "עובד",
       "id": 3
+    },
+    {
+      "username": "כגחכג",
+      "name": "יוסי יוסי",
+      "password": "12334554453",
+      "birthDate": "2022-01-01T12:34:29.000Z",
+      "gender": "נקבה",
+      "email": "yosi@yosi.yos",
+      "imageFile": {},
+      "status": "משתמש",
+      "id": 4
     }
   ],
   "posts": [
