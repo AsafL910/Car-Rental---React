@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import CarForRent from "../CarForRent.js";
-import { Form as SearchBar, Container, Row, Col, Alert } from "react-bootstrap";
+import { Form as SearchBar, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
 
 const SearchCarsForRent = () => {
   useEffect(() => {
     const changeCars = async () => {
+      setIsLoading(true)
       const carList = await fetchCars();
       setCars(carList);
       setFilteredCars(carList);
+      setIsLoading(false)
     };
     changeCars();
   }, []);
 
+  const [isLoading, setIsLoading] = useState(false)
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState(cars);
   const [selectedProperty, setSelectedProperty] = useState("brand");
@@ -52,11 +55,12 @@ const SearchCarsForRent = () => {
         </Row>
       </Container>
       <Container>
-        {filteredCars.length === 0 ? (
+        {isLoading ? <Spinner style={{position: "fixed", top: "50%", left: "50%"}}animation="border"/> :  (filteredCars.length === 0 ? (
           <Alert variant="warning">אין רכבים שתואמים את החיפוש שלך</Alert>
         ) : (
           filteredCars.map((car) => <CarForRent key={car.id} car={car} />)
-        )}
+        ))}
+        
       </Container>
     </div>
   );

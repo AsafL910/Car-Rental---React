@@ -8,7 +8,7 @@ import {
 import { BsGenderAmbiguous } from "react-icons/bs";
 import UserInputText from "../UserInputText.js";
 import DatePicker from "../DatePicker.js";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Spinner } from "react-bootstrap";
 import UserInputRadio from "../UserInputRadio.js";
 import UserInputFile from "../UserInputFile.js";
 import { useState } from "react";
@@ -36,6 +36,7 @@ const SignUp = () => {
   const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [imageFile, setImageFile] = useState(new File([], "Temp.png"));
+  const [isLoading, setIsLoading] = useState(false);
 
   const resetForm = () => {
     setName("");
@@ -46,9 +47,8 @@ const SignUp = () => {
     setImageFile(new File([], "Temp.png"));
   };
 
-  const submitForm = async () => {
-    validateAll(username, name, password, gender, email, imageFile)
-      ? await fetch("http://localhost:5000/users", {
+  const fetchUsers = async () => {
+    await fetch("http://localhost:5000/users", {
           method: "POST",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
@@ -62,7 +62,17 @@ const SignUp = () => {
             status: "משתמש",
           }),
         })
-      : alert("אנא וודא שכל הפרטים נכונים");
+  }
+
+  const submitForm = async () => {
+    if (validateAll(username, name, password, gender, email, imageFile)) {
+      setIsLoading(true)
+      await fetchUsers()
+      setIsLoading(false)
+      resetForm()
+    }
+    else alert("אנא וודא שכל הפרטים נכונים");
+      
   };
   return (
     <Card
@@ -81,7 +91,7 @@ const SignUp = () => {
         placeholder="הכנס שם מלא"
         icon={<FaUserTag />}
         validationFunc={validateName}
-        input={name}
+        value={name}
         onChange={(text) => setName(text)}
       />
       <UserInputText
@@ -90,7 +100,7 @@ const SignUp = () => {
         placeholder="הכנס שם משתמש"
         icon={<FaUser />}
         validationFunc={validateUsername}
-        input={username}
+        value={username}
         onChange={(text) => setUsername(text)}
       />
       <UserInputText
@@ -100,7 +110,7 @@ const SignUp = () => {
         icon={<FaKey />}
         extraInfo="על הסיסמא להיות מעל 8 תווים"
         validationFunc={validatePassword}
-        input={password}
+        value={password}
         onChange={(text) => setPassword(text)}
       />
       <DatePicker
@@ -121,7 +131,7 @@ const SignUp = () => {
         placeholder="הכנס אימייל"
         extraInfo="על כתובת האימייל להיות תקנית"
         validationFunc={validateEmail}
-        input={email}
+        value={email}
         onChange={(text) => setEmail(text)}
       />
       <UserInputFile
@@ -129,7 +139,7 @@ const SignUp = () => {
         extraInfo="גודל מקסימלי לקובץ 10mb"
         validationFunc={validateImage}
         onChange={(newImage) => setImageFile(newImage)}
-        input={imageFile}
+        value={imageFile}
       />
 
       <Button
@@ -137,7 +147,13 @@ const SignUp = () => {
         size="lg"
         onClick={submitForm}
       >
-        שלח
+        {isLoading ? <Spinner
+      as="span"
+      animation="border"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    /> : <span>שלח</span>} 
       </Button>
     </Card>
   );

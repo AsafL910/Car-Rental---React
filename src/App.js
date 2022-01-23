@@ -5,21 +5,31 @@ import SignIn from "./components/pages/SignIn.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Admin from "./components/pages/Admin.js";
 import SearchCarsForRent from "./components/pages/SearchCarsForRent.js";
-import {LoginContext} from './contexts/LoginContext.js'
+import { createContext, useState } from "react";
+
+export const UserContext = createContext({});
 
 function App() {
+  const [user, setUser] = useState({
+    username: "אורח",
+    status: "אורח",
+  });
+
+  
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signUp" element={<SignUp/>} />
-          <Route path="/signIn" element={<SignIn/>}/>
-          <Route path='/search' element={<SearchCarsForRent/>}/>
-          <Route path='/admin' element={<Admin/>}/>
-        </Routes>
-      </Router>
+      <UserContext.Provider value={{user, setUser}}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/admin" element={<Admin />}/>
+            <Route path="/" element={<Home />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/search" element={<SearchCarsForRent />} />
+          </Routes>
+        </Router>
+      </UserContext.Provider>
     </div>
   );
 }

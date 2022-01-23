@@ -1,9 +1,12 @@
 import { Nav, Navbar as ReactNavbar } from "react-bootstrap";
 import { FaGlobeAfrica } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 const Navbar = () => {
   const myStyle = { marginLeft: 10, marginRight: 10 };
+  const { user, setUser } = useContext(UserContext);
 
   return (
     <ReactNavbar
@@ -37,7 +40,20 @@ const Navbar = () => {
         </Nav.Item>
         <Nav.Item>
           <Link style={myStyle} to="/signIn">
-            התחברות
+            {user.username === "אורח" ? (
+              <span>התחבר</span>
+            ) : (
+              <span
+                onClick={() =>
+                  setUser({
+                    username: "אורח",
+                    status: "אורח",
+                  })
+                }
+              >
+                התנתק
+              </span>
+            )}
           </Link>
         </Nav.Item>
       </Nav>
