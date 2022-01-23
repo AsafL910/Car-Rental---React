@@ -21,7 +21,6 @@ const SignIn = () => {
         text="שם משתמש:"
         placeholder="הכנס שם משתמש"
         icon={<FaUser/>}
-        validationFunc={validateUsername}
         input={username}
         onChange={(text) => setUsername(text)}
       />
@@ -30,7 +29,6 @@ const SignIn = () => {
         text="סיסמא:"
         placeholder="הכנס סיסמא"
         icon={<FaKey/>}
-        validationFunc={validatePassword}
         input={password}
         onChange={(text) => setPassword(text)}
       />

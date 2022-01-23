@@ -3,15 +3,27 @@ import { FaGlobeAfrica } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-const myStyle = {marginLeft: 10, marginRight: 10};
+  const myStyle = { marginLeft: 10, marginRight: 10 };
 
   return (
-    <ReactNavbar expand="lg" bg="dark" variant="dark" fixed="top">
+    <ReactNavbar
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      fixed="top"
+      style={{ display: "flex" }}
+    >
       <ReactNavbar.Brand href="/">
         <FaGlobeAfrica></FaGlobeAfrica> גלובוס רכבים
       </ReactNavbar.Brand>
 
-      <Nav style={{ flexDirection: "row" }}>
+      <Nav
+        style={{
+          flexDirection: "row",
+          justifySelf: "left",
+          textDecoration: "none",
+        }}
+      >
         {" "}
         <Nav.Item>
           <Link style={myStyle} to="/search">

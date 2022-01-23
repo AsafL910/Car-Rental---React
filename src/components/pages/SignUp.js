@@ -59,14 +59,20 @@ const SignUp = () => {
             gender: gender,
             email: email,
             imageFile: imageFile,
-            status: "משתמש"
+            status: "משתמש",
           }),
         })
       : alert("אנא וודא שכל הפרטים נכונים");
   };
   return (
     <Card
-      style={{ width: 400, padding: 20, margin: 100, alignItems: "center" }}
+      style={{
+        width: 400,
+        padding: 20,
+        margin: 100,
+        alignItems: "center",
+        opacity: "0.95",
+      }}
       className="d-grid gap-2"
     >
       <UserInputText
@@ -126,7 +132,11 @@ const SignUp = () => {
         input={imageFile}
       />
 
-      <Button style={{ margin: 10 }} size="lg" onClick={submitForm}>
+      <Button
+        style={{ margin: 10 }}
+        size="lg"
+        onClick={submitForm}
+      >
         שלח
       </Button>
     </Card>

@@ -16,7 +16,7 @@ const CarForRent = ({ car }) => {
           <Row>
             <Col>
               <Card.Text>עלות יומית: {carModel.dailyCost}₪</Card.Text>
-              <Card.Text>עלות איחור: {carModel.dailyCost}₪</Card.Text>
+              <Card.Text>עלות איחור: {carModel.delayCost}₪</Card.Text>
               <Card.Text>קילומטרז': {car.km}</Card.Text>
               <Card.Text>גיר: {carModel.gear}</Card.Text>
               <Card.Text>להשכרה ב{car.branch.name}</Card.Text>

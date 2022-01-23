@@ -3,7 +3,7 @@ import { Tabs, Tab } from "react-bootstrap";
 
 const Admin = () => {
   return (
-    <Tabs style={{marginTop: "8vh"}} defaultActiveKey="users">
+    <Tabs style={{ marginTop: "8vh" }} defaultActiveKey="users">
       <Tab eventKey="users" title="משתמשים">
         <ManageObjects fetchLink="http://localhost:5000/users" />
       </Tab>

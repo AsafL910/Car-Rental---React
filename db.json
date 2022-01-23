@@ -67,7 +67,7 @@
     {
       "id": 3,
       "brand": "Lamborghini",
-      "model": "Adventador",
+      "model": "Aventador",
       "dailyCost": 2900,
       "delayCost": 5000,
       "year": "2016",
@@ -84,7 +84,7 @@
     },
     {
       "id": 5,
-      "brand": "Totota",
+      "brand": "Toyota",
       "model": "Corola",
       "dailyCost": 200,
       "delayCost": 300,
@@ -150,7 +150,7 @@
       "id": 3,
       "car": {
         "id": 5,
-        "brand": "Totota",
+        "brand": "Toyota",
         "model": "Corola",
         "dailyCost": 200,
         "delayCost": 300,

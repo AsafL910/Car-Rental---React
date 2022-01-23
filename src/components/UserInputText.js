@@ -22,7 +22,7 @@ const UserInputText = ({
         onChange={(newInput) => {
           onChange(newInput.target.value);
         }}
-        isValid={validationFunc(input)}
+        isValid={validationFunc && validationFunc(input)}
       />
       <Input.Text className="text-muted">{extraInfo}</Input.Text>
     </Input>
