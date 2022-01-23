@@ -15,14 +15,11 @@ const CarForRent = ({ car }) => {
           </Card.Title>
           <Row>
             <Col>
-              <Card.Text>
-                {" "}
-                <p>עלות יומית: {carModel.dailyCost}₪</p>
-                <p>עלות איחור: {carModel.dailyCost}₪</p>
-                <p>קילומטרז': {car.km}</p>
-                <p>גיר: {carModel.gear}</p>
-                <p>להשכרה ב{car.branch.name}</p>
-              </Card.Text>
+              <Card.Text>עלות יומית: {carModel.dailyCost}₪</Card.Text>
+              <Card.Text>עלות איחור: {carModel.dailyCost}₪</Card.Text>
+              <Card.Text>קילומטרז': {car.km}</Card.Text>
+              <Card.Text>גיר: {carModel.gear}</Card.Text>
+              <Card.Text>להשכרה ב{car.branch.name}</Card.Text>
             </Col>
             <Col>
               <Card.Img src={car.image} />
@@ -30,9 +27,9 @@ const CarForRent = ({ car }) => {
           </Row>
         </Container>
         {car.availability === "זמין" ? (
-          <Button class="btn btn-success">הזמן</Button>
+          <Button className="btn btn-success">הזמן</Button>
         ) : (
-          <Button class="btn btn-danger" disabled>
+          <Button className="btn btn-danger" disabled>
             לא זמין
           </Button>
         )}
