@@ -1,8 +1,17 @@
 import { Card, Container, Col, Row, Button } from "react-bootstrap";
+import {useContext, useState} from 'react'
+import {UserContext} from '../App.js'
+import RentCar from "./RentCar.js";
 
 const CarForRent = ({ car }) => {
+  const [rentCar, setRentCar] = useState(false);
   const carModel = car.car;
+  const {user} = useContext(UserContext);
+  const openOrder = () => {
+     user.status === 'אורח'? alert("עליך להתחבר על מנת להזמין רכב"): setRentCar(true) 
+  }
   return (
+    <>
     <Card
       style={{ margin: 10 }}
       border={car.availability === "זמין" ? "success" : "danger"}
@@ -27,7 +36,7 @@ const CarForRent = ({ car }) => {
           </Row>
         </Container>
         {car.availability === "זמין" ? (
-          <Button className="btn btn-success">הזמן</Button>
+          <Button className="btn btn-success" onClick={openOrder}>הזמן</Button>
         ) : (
           <Button className="btn btn-danger" disabled>
             לא זמין
@@ -35,6 +44,8 @@ const CarForRent = ({ car }) => {
         )}
       </Card.Body>
     </Card>
+    <RentCar show={rentCar} setShow={(value)=> setRentCar(value)} car={car}/>
+    </>
   );
 };
 
