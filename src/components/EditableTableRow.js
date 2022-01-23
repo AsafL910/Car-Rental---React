@@ -25,7 +25,7 @@ const EditableTableRow = ({ startObject, edit, editTrue, editFalse, reload, fetc
   return (
       
     <tr key={object.id} onClick={() => editTrue()}>
-        {Object.keys(object).map((property, index) => ( (typeof object[property]  === 'string' ) &&
+        {Object.keys(object).map((property, index) => ( (typeof object[property]  === 'string' || typeof object[property] === "number" ) &&
         <EditableTableField
           key={index}
           value={object[property]}

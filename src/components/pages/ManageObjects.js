@@ -14,15 +14,18 @@ const ManageObjects = ({ fetchLink }) => {
   }, []);
   const fetchObjects = async () => await (await fetch(fetchLink)).json();
   return (
-    <div style={{ height: "10vh"}}>
-      <Table striped bordered hover style={{ overflow: "auto"}}>
+    <div style={{ height: "10vh" }}>
+      <Table striped bordered hover style={{ overflow: "auto" }}>
         <thead>
           <tr>
             {Object.getOwnPropertyNames(
               objects.length > 0 ? objects[0] : {}
             ).map(
               (key) =>
-                typeof objects[0][key] === "string" && <th key={key}>{key}</th>
+                (typeof objects[0][key] === "string" ||
+                  typeof objects[0][key] === "number") && (
+                  <th key={key}>{key}</th>
+                )
             )}
             {edit && (
               <th>

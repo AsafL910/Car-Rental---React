@@ -14,7 +14,7 @@ const myStyle = {marginLeft: 10, marginRight: 10};
       <Nav style={{ flexDirection: "row" }}>
         {" "}
         <Nav.Item>
-          <Link style={myStyle} to="/">
+          <Link style={myStyle} to="/search">
             חיפוש רכבים
           </Link>
         </Nav.Item>

@@ -104,33 +104,69 @@
   "availableCars": [
     {
       "id": 1,
-      "modelId": 1,
-      "KM": 50000,
-      "image": {},
+      "car": {
+        "id": 3,
+        "brand": "Lamborghini",
+        "model": "Aventador",
+        "dailyCost": 2900,
+        "delayCost": 5000,
+        "year": "2016",
+        "gear": "ידני"
+      },
+      "km": 50000,
+      "image": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Lamborghini/Aventador/6721/Lamborghini-Aventador-SVJ/1621849426405/front-left-side-47.jpg",
       "validity": "תקין",
       "availability": "זמין",
       "serialNumber": "123-123-123",
-      "branchId": 1
+      "branch": {
+        "id": 1,
+        "position": "[10.123,234.343]",
+        "name": "צריפין"
+      }
     },
     {
       "id": 2,
-      "modelId": 4,
-      "KM": 12000,
-      "image": {},
+      "car": {
+        "id": 4,
+        "brand": "Ford",
+        "model": "Mustang",
+        "dailyCost": 1000,
+        "delayCost": 1300,
+        "year": "2020",
+        "gear": "אוטומטי"
+      },
+      "km": 12000,
+      "image": "https://www.topgear.com/sites/default/files/cars-car/image/2018/03/mustang_lightning_blue_009.jpg",
       "validity": "תקין",
       "availability": "זמין",
       "serialNumber": "456-123-653",
-      "branchId": 1
+      "branch": {
+        "id": 1,
+        "position": "[10.123,234.343]",
+        "name": "צריפין"
+      }
     },
     {
       "id": 3,
-      "modelId": 5,
-      "KM": 92000,
-      "image": {},
+      "car": {
+        "id": 5,
+        "brand": "Totota",
+        "model": "Corola",
+        "dailyCost": 200,
+        "delayCost": 300,
+        "year": "2015",
+        "gear": "ידני"
+      },
+      "km": 92000,
+      "image": "https://t1-cms-2.images.toyota-europe.com/toyotaone/ilhe/SEDAN-PETROL%20(1)_tcm-3123-1822954.jpg",
       "validity": "לא תקין",
       "availability": "לא זמין",
       "serialNumber": "496-199-602",
-      "branchId": 1
+      "branch": {
+        "id": 1,
+        "position": "[10.123,234.343]",
+        "name": "צריפין"
+      }
     }
   ],
   "branches": [
