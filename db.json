@@ -9,28 +9,6 @@
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
       "status": "מנהלת",
-      "id": 1
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
-      "status": "אורח",
-      "id": 2
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
-      "status": "מנהלת",
       "id": 3
     },
     {
@@ -52,39 +30,6 @@
       "gender": "זכר",
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
-      "status": "מנהלת",
-      "id": 5
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
-      "status": "אורח",
-      "id": 6
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
-      "status": "מנהלת",
-      "id": 7
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
       "status": "אורח",
       "id": 8
     },
@@ -97,62 +42,128 @@
       "email": "efefef@ewssfs.dssdsdsds",
       "imageFile": {},
       "status": "מנהלת",
-      "id": 9
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
-      "status": "אורח",
-      "id": 10
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
-      "status": "מנהלת",
       "id": 11
-    },
-    {
-      "username": "edfdsfdfdf",
-      "name": "asaf",
-      "password": "hgdsjfgefgdsf",
-      "birthDate": "2021-12-26T09:29:44.000Z",
-      "gender": "זכר",
-      "email": "efefef@ewssfs.dssdsdsds",
-      "imageFile": {},
-      "status": "אורח",
-      "id": 12
     }
   ],
-  "posts": [
+  "cars": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "brand": "Tesla",
+      "model": "S",
+      "dailyCost": 1000,
+      "delayCost": 1500,
+      "year": "2018",
+      "gear": "אוטומטי"
     },
     {
       "id": 2,
-      "title": "json-server",
-      "author": "typicode"
+      "brand": "Tesla",
+      "model": "Y",
+      "dailyCost": 1200,
+      "delayCost": 1800,
+      "year": "2019",
+      "gear": "אוטומטי"
+    },
+    {
+      "id": 3,
+      "brand": "Lamborghini",
+      "model": "Adventador",
+      "dailyCost": 2900,
+      "delayCost": 5000,
+      "year": "2016",
+      "gear": "ידני"
+    },
+    {
+      "id": 4,
+      "brand": "Ford",
+      "model": "Mustang",
+      "dailyCost": 1000,
+      "delayCost": 1300,
+      "year": "2020",
+      "gear": "אוטומטי"
+    },
+    {
+      "id": 5,
+      "brand": "Totota",
+      "model": "Corola",
+      "dailyCost": 200,
+      "delayCost": 300,
+      "year": "2015",
+      "gear": "ידני"
+    },
+    {
+      "id": 6,
+      "brand": "Skoda",
+      "model": "Octavia",
+      "dailyCost": 600,
+      "delayCost": 1000,
+      "year": "2017",
+      "gear": "אוטומטי"
     }
   ],
-  "comments": [
+  "availableCars": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "modelId": 1,
+      "KM": 50000,
+      "image": {},
+      "validity": "תקין",
+      "availability": "זמין",
+      "serialNumber": "123-123-123",
+      "branchId": 1
+    },
+    {
+      "id": 2,
+      "modelId": 4,
+      "KM": 12000,
+      "image": {},
+      "validity": "תקין",
+      "availability": "זמין",
+      "serialNumber": "456-123-653",
+      "branchId": 1
+    },
+    {
+      "id": 3,
+      "modelId": 5,
+      "KM": 92000,
+      "image": {},
+      "validity": "לא תקין",
+      "availability": "לא זמין",
+      "serialNumber": "496-199-602",
+      "branchId": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "branches": [
+    {
+      "id": 1,
+      "position": "[10.123,234.343]",
+      "name": "צריפין"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "startDate": "4/6/2021",
+      "endDate": "5/6/2021",
+      "actualEndDate": "5/2/2021",
+      "userId": 2,
+      "carId": 1
+    },
+    {
+      "id": 2,
+      "startDate": "1/2/2021",
+      "endDate": "5/2/2021",
+      "actualEndDate": "9/2/2021",
+      "userId": 1,
+      "carId": 4
+    },
+    {
+      "id": 3,
+      "startDate": "30/4/2020",
+      "endDate": "7/5/2020",
+      "actualEndDate": "8/5/2020",
+      "userId": 4,
+      "carId": 2
+    }
+  ]
 }
