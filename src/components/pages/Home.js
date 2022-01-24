@@ -1,4 +1,4 @@
-import { Carousel, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useContext } from "react";
 import { UserContext } from "../../App";
 const Home = () => {
@@ -9,11 +9,12 @@ const Home = () => {
         style={{
           backgroundColor: "#f5f5f7",
           textAlign: "center",
-          padding: "8%",
+          padding: "3%",
         }}
       >
         <Col>
-          <h2>שלום {user.name},</h2>
+        <img style={{width: "10%" ,margin: "auto", marginTop: 100}} src="https://cdn.pixabay.com/photo/2016/04/17/01/41/globe-1334084_960_720.png"></img>
+          <h1>שלום {user.name},</h1>
           {user.username === "אורח" ? <p>למה שלא תתחבר?</p>: <p>שכור רכב בבקשה</p>}
         </Col>
       </Row>
