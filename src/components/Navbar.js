@@ -1,10 +1,18 @@
 import { Nav, Navbar as ReactNavbar } from "react-bootstrap";
-import { FaGlobeAfrica, FaSearch, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {
+  FaGlobeAfrica,
+  FaSearch,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUserAlt,
+  FaHome
+} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../App";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const myStyle = { marginLeft: 10, marginRight: 10 };
   const { user, setUser } = useContext(UserContext);
 
@@ -16,7 +24,7 @@ const Navbar = () => {
       fixed="top"
       style={{ display: "flex" }}
     >
-      <ReactNavbar.Brand href="/">
+      <ReactNavbar.Brand>
         <FaGlobeAfrica></FaGlobeAfrica> גלובוס רכבים
       </ReactNavbar.Brand>
 
@@ -27,21 +35,25 @@ const Navbar = () => {
           textDecoration: "none",
         }}
       >
-        {" "}
+       <Nav.Link  style={myStyle} onClick={() => navigate("/")}><FaHome/></Nav.Link>
         <Nav.Item>
-          <Link style={myStyle} to="/search">
-           חיפוש רכבים <FaSearch/>
-          </Link>
+          <Nav.Link style={myStyle} onClick={() => navigate("/search")}>
+            <FaSearch />
+          </Nav.Link>
         </Nav.Item>
+          {user.username === 'אורח' && 
+          <Nav.Item>
+          <Nav.Link style={myStyle} onClick={() => navigate("/signUp")}>
+            <FaUserAlt />
+          </Nav.Link>
+        </Nav.Item>}
         <Nav.Item>
-          <Link style={myStyle} to="/signUp">
-            הרשמה
-          </Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Link style={myStyle} to="/signIn">
+          <Nav.Link style={myStyle} onClick={() => navigate("/signIn")}>
             {user.username === "אורח" ? (
-              <span> התחבר <FaSignInAlt/></span>
+              <span>
+                {" "}
+                <FaSignInAlt />
+              </span>
             ) : (
               <span
                 onClick={() =>
@@ -51,10 +63,10 @@ const Navbar = () => {
                   })
                 }
               >
-                <FaSignOutAlt/> התנתק
+                <FaSignOutAlt /> התנתק
               </span>
             )}
-          </Link>
+          </Nav.Link>
         </Nav.Item>
       </Nav>
     </ReactNavbar>

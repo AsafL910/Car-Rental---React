@@ -57,8 +57,8 @@ const SearchCarsForRent = () => {
         </Row>
       </Container>
       <Container>
-        {isLoading ? <Spinner style={{position: "fixed", top: "50%", left: "50%"}}animation="border"/> :  (filteredCars.length === 0 ? (
-          <Alert variant="warning">אין רכבים שתואמים את החיפוש שלך</Alert>
+        {isLoading ? <Spinner style={{position: "fixed", top: "50%", left: "50%"}} animation="border"/> :  (filteredCars.length === 0 ? (
+          <Alert style={{position: "fixed", top: "30%", left: "42%"}} variant="warning">אין רכבים שתואמים את החיפוש שלך</Alert>
         ) : (
           filteredCars.map((car) => <CarForRent key={car.id} car={car} isFavorite={car.isFavorite}/>)
         ))}

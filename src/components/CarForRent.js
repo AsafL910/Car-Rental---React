@@ -55,13 +55,9 @@ const CarForRent = ({ car }) => {
               </Col>
             </Row>
           </Container>
-          {car.availability === "זמין" ? (
+          {car.availability === "זמין" && (
             <Button variant="success" onClick={() => setRentCar(true)}>
               הזמן
-            </Button>
-          ) : (
-            <Button variant="danger" disabled>
-              לא זמין
             </Button>
           )}
         </Card.Body>

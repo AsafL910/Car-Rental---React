@@ -21,3 +21,8 @@ Table {
 Container {
   margin: 3%;
 }
+
+.homeImg {
+  width: 100%;
+  height: 100%;
+}
