@@ -2,7 +2,7 @@ import { Modal, Button } from "react-bootstrap";
 import { useContext } from "react";
 import { UserContext } from "../App";
 
-const RentCar = ({ show, setShow, car }) => {
+const RentCarModal = ({ show, setShow, car }) => {
   const { user } = useContext(UserContext);
 
   const makeReservation = async () => {
@@ -33,10 +33,14 @@ const RentCar = ({ show, setShow, car }) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Button onClick={makeReservation}>הזמן</Button>
+      {user.status === 'אורח' ? <p>עליך להתחבר על מנת לבצע הזמנה</p> : <p>מידע על הרכב</p>}
       </Modal.Body>
+      <Modal.Footer>
+        {user.status !== 'אורח' && <Button onClick={makeReservation}>הזמן</Button>}
+        <Button variant='secondary' onClick={()=>setShow(false)}>סגירה</Button>
+      </Modal.Footer>
     </Modal>
   );
 };
 
-export default RentCar;
+export default RentCarModal;

@@ -7,13 +7,15 @@ const SearchCarsForRent = () => {
     const changeCars = async () => {
       setIsLoading(true)
       const carList = await fetchCars();
-      setCars(carList);
-      setFilteredCars(carList);
+      const favCars =JSON.parse(localStorage.getItem("favoriteCars"));
+      const modifiedCars = carList.map(car => Object.assign(car, {isFavorite: favCars.some((favCar) => favCar === car.id)}));
+      const sortedCars = modifiedCars.sort((firstCar, secondCar) => firstCar.isFavorite? -1 : 1)
+      setCars(sortedCars);
+      setFilteredCars(sortedCars);
       setIsLoading(false)
     };
     changeCars();
   }, []);
-
   const [isLoading, setIsLoading] = useState(false)
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState(cars);
@@ -58,7 +60,7 @@ const SearchCarsForRent = () => {
         {isLoading ? <Spinner style={{position: "fixed", top: "50%", left: "50%"}}animation="border"/> :  (filteredCars.length === 0 ? (
           <Alert variant="warning">אין רכבים שתואמים את החיפוש שלך</Alert>
         ) : (
-          filteredCars.map((car) => <CarForRent key={car.id} car={car} />)
+          filteredCars.map((car) => <CarForRent key={car.id} car={car} isFavorite={car.isFavorite}/>)
         ))}
         
       </Container>

@@ -57,8 +57,8 @@ const EditableTableRow = ({
           >
             <FaSave /> עדכון
           </Button>
-          <button
-            className="btn btn-danger"
+          <Button
+            variant="danger"
             style={{
               background: "#dc3545",
               color: "white",
@@ -69,7 +69,7 @@ const EditableTableRow = ({
             onClick={() => deleteUser(object)}
           >
             <FaTrash /> מחיקה
-          </button>
+          </Button>
         </div>
       )}
     </tr>

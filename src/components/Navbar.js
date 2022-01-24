@@ -1,5 +1,5 @@
 import { Nav, Navbar as ReactNavbar } from "react-bootstrap";
-import { FaGlobeAfrica } from "react-icons/fa";
+import { FaGlobeAfrica, FaSearch, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../App";
@@ -30,7 +30,7 @@ const Navbar = () => {
         {" "}
         <Nav.Item>
           <Link style={myStyle} to="/search">
-            חיפוש רכבים
+           חיפוש רכבים <FaSearch/>
           </Link>
         </Nav.Item>
         <Nav.Item>
@@ -41,7 +41,7 @@ const Navbar = () => {
         <Nav.Item>
           <Link style={myStyle} to="/signIn">
             {user.username === "אורח" ? (
-              <span>התחבר</span>
+              <span> התחבר <FaSignInAlt/></span>
             ) : (
               <span
                 onClick={() =>
@@ -51,7 +51,7 @@ const Navbar = () => {
                   })
                 }
               >
-                התנתק
+                <FaSignOutAlt/> התנתק
               </span>
             )}
           </Link>

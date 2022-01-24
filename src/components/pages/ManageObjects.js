@@ -54,7 +54,7 @@ const ManageObjects = ({ fetchLink }) => {
         style={{ position: "fixed", left: 30, bottom: 30 }}
       >
         <Button
-          className="btn-secondary"
+          variant="secondary"
           onClick={() => setEdit(!edit)}
           style={{
             borderRadius: 10,
@@ -65,7 +65,7 @@ const ManageObjects = ({ fetchLink }) => {
           {edit ? <FaSave /> : <FaEdit />}
         </Button>
         <Button
-          className="btn-secondary"
+          variant="secondary"
           style={{
             borderRadius: 10,
             margin: 10,
