@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Admin from "./components/pages/Admin.js";
 import SearchCarsForRent from "./components/pages/SearchCarsForRent.js";
 import { createContext, useState } from "react";
+import RequireAuth from './components/RequireAuth.js'
+
 
 export const UserContext = createContext({});
 

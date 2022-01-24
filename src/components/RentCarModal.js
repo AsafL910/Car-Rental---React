@@ -1,9 +1,13 @@
 import { Modal, Button } from "react-bootstrap";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../App";
+import DatePicker from "./DatePicker.js";
+import { FaCalendarAlt } from "react-icons/fa";
 
 const RentCarModal = ({ show, setShow, car }) => {
   const { user } = useContext(UserContext);
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
 
   const makeReservation = async () => {
     setShow(false);
@@ -12,8 +16,8 @@ const RentCarModal = ({ show, setShow, car }) => {
       method: "POST",
       headers: { "Content-type": "Application/json" },
       body: JSON.stringify({
-        startDate: "4/6/2021",
-        endDate: "5/6/2021",
+        startDate: startDate,
+        endDate: endDate,
         userId: user.id,
         carId: car.car.id,
       }),
@@ -33,7 +37,12 @@ const RentCarModal = ({ show, setShow, car }) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {user.status === 'אורח' ? <p>עליך להתחבר על מנת לבצע הזמנה</p> : <p>מידע על הרכב</p>}
+      {user.status === 'אורח' ? <p>עליך להתחבר על מנת לבצע הזמנה</p> : 
+      <>
+      <DatePicker title="תאריך התחלה" icon={<FaCalendarAlt/>} onChange={(input)=>{setStartDate(input)}} date={startDate} maxDate={endDate}/>
+      <DatePicker title="תאריך סיום" icon={<FaCalendarAlt/>} onChange={(input)=>{setEndDate(input)}} date={endDate} minDate={startDate}/>
+      </>}
+      
       </Modal.Body>
       <Modal.Footer>
         {user.status !== 'אורח' && <Button onClick={makeReservation}>הזמן</Button>}

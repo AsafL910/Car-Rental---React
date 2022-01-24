@@ -6,30 +6,32 @@ import { FaSave, FaTrash } from "react-icons/fa";
 const EditableTableRow = ({
   startObject,
   edit,
-  editTrue,
-  editFalse,
   reload,
   fetchLink,
 }) => {
+  const [isChanged, setIsChanged] = useState(false);
+  const [editable, setEditable] = useState(edit);
   const [object, setObject] = useState(startObject);
-  const updateUser = async (object) => {
-    await fetch(`${fetchLink}/${object.id}`, {
-      method: "PUT",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(object),
-    });
-    editFalse();
+  const updateObject = async (object) => {
+      await fetch(`${fetchLink}/${object.id}`, {
+        method: "PUT",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(object),
+      });
+      setIsChanged(false)
+      setEditable(false)      
   };
 
-  const deleteUser = async (object) => {
+  const deleteObject = async (object) => {
     await fetch(`${fetchLink}/${object.id}`, {
       method: "DELETE",
     });
+    setEditable(false);
     reload();
   };
 
   return (
-    <tr key={object.id} onClick={() => editTrue()}>
+    <tr key={object.id} onClick={() => setEditable(true)}>
       {Object.keys(object).map(
         (property, index) =>
           (typeof object[property] === "string" ||
@@ -37,13 +39,15 @@ const EditableTableRow = ({
             <EditableTableField
               key={index}
               value={object[property]}
-              edit={edit}
-              onChange={(input) => setObject({ ...object, [property]: input })}
+              edit={editable}
+              onChange={(input) => {setObject(
+                { ...object, [property]: input })
+                setIsChanged(true)}}
             />
           )
       )}
 
-      {edit && (
+      {editable && (
         <div>
           <Button
             style={{
@@ -53,7 +57,8 @@ const EditableTableRow = ({
               borderRadius: "15px",
             }}
             cursor="pointer"
-            onClick={() => updateUser(object)}
+            onClick={() => updateObject(object)}
+            disabled={!isChanged}
           >
             <FaSave /> עדכון
           </Button>
@@ -66,7 +71,7 @@ const EditableTableRow = ({
               borderRadius: "15px",
             }}
             cursor="pointer"
-            onClick={() => deleteUser(object)}
+            onClick={() => deleteObject(object)}
           >
             <FaTrash /> מחיקה
           </Button>

@@ -2,10 +2,11 @@ import { Card, Button } from "react-bootstrap";
 import UserInputText from "../UserInputText";
 import { FaUser, FaKey } from "react-icons/fa";
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../App.js";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const validateUsername = (username) => username.length < 20 && username;
@@ -22,7 +23,12 @@ const SignIn = () => {
       await fetch("http://localhost:5000/users")
     ).json();
     const foundUser = allUsers.find((currUser) => currUser.username === username && currUser.password === password)
-    foundUser ? setUser(foundUser) : alert("לא מצאנו את המשתמש שלך")
+    if (foundUser) {
+      setUser(foundUser)
+      navigate("/")
+    } else {
+      alert("לא מצאנו את המשתמש שלך")
+    }
     setUsername("")
     setPassword("")
   }

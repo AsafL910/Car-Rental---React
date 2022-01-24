@@ -26,13 +26,12 @@ const ManageObjects = ({ fetchLink }) => {
                   typeof objects[0][key] === "number") && (
                   <th key={key}>{key}</th>
                 )
-            )}
-            {edit && (
+            )}           
               <th>
                 {" "}
                 עריכה <FaEdit />
               </th>
-            )}
+            
           </tr>
         </thead>
         <tbody>
@@ -41,8 +40,6 @@ const ManageObjects = ({ fetchLink }) => {
               key={index}
               startObject={object}
               edit={edit}
-              editTrue={() => setEdit(true)}
-              editFalse={() => setEdit(false)}
               reload={async () => setObjects(await fetchObjects())}
               fetchLink={fetchLink}
             />

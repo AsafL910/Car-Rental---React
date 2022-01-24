@@ -12,6 +12,7 @@ import { Card, Button, Spinner } from "react-bootstrap";
 import UserInputRadio from "../UserInputRadio.js";
 import UserInputFile from "../UserInputFile.js";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const validateUsername = (username) => username.length < 20 && username;
 const validateName = (name) => !/\d/.test(name) && name;
@@ -38,6 +39,8 @@ const SignUp = () => {
   const [imageFile, setImageFile] = useState(new File([], "Temp.png"));
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   const resetForm = () => {
     setName("");
     setUsername("");
@@ -47,32 +50,40 @@ const SignUp = () => {
     setImageFile(new File([], "Temp.png"));
   };
 
-  const fetchUsers = async () => {
+  const addUser = async () => {
     await fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: { "Content-type": "Application/json" },
-          body: JSON.stringify({
-            username: username,
-            name: name,
-            password: password,
-            birthDate: birthDate,
-            gender: gender,
-            email: email,
-            imageFile: imageFile,
-            status: "משתמש",
-          }),
-        })
+      method: "POST",
+      headers: { "Content-type": "Application/json" },
+      body: JSON.stringify({
+        username: username,
+        name: name,
+        password: password,
+        birthDate: birthDate,
+        gender: gender,
+        email: email,
+        imageFile: imageFile,
+        status: "משתמש",
+      }),
+    });
+  };
+
+  const fetchUsers = async () => {
+    const users = await (await fetch("http://localhost:5000/users")).json()
+    return users;
   }
 
   const submitForm = async () => {
     if (validateAll(username, name, password, gender, email, imageFile)) {
-      setIsLoading(true)
-      await fetchUsers()
-      setIsLoading(false)
-      resetForm()
-    }
-    else alert("אנא וודא שכל הפרטים נכונים");
-      
+      setIsLoading(true);
+      if (((await fetchUsers()).some((user) => user.username === username))) {
+        alert("שם משתמש תפוס");
+        setIsLoading(false);
+      } else {
+      resetForm();
+      addUser();
+      navigate('/signIn')
+      }
+    } else alert("אנא וודא שכל הפרטים נכונים");
   };
   return (
     <Card
@@ -118,6 +129,7 @@ const SignUp = () => {
         icon={<FaCalendarAlt />}
         date={birthDate}
         onChange={(newDate) => setBirthDate(newDate)}
+        maxDate={new Date()}
       />
       <UserInputRadio
         text="מין:"
@@ -142,18 +154,18 @@ const SignUp = () => {
         value={imageFile}
       />
 
-      <Button
-        style={{ margin: 10 }}
-        size="lg"
-        onClick={submitForm}
-      >
-        {isLoading ? <Spinner
-      as="span"
-      animation="border"
-      size="sm"
-      role="status"
-      aria-hidden="true"
-    /> : <span>שלח</span>} 
+      <Button style={{ margin: 10 }} size="lg" onClick={submitForm}>
+        {isLoading ? (
+          <Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            aria-hidden="true"
+          />
+        ) : (
+          <span>שלח</span>
+        )}
       </Button>
     </Card>
   );
