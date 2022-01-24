@@ -8,7 +8,7 @@ import {
 import { BsGenderAmbiguous } from "react-icons/bs";
 import UserInputText from "../UserInputText.js";
 import DatePicker from "../DatePicker.js";
-import { Card, Button, Spinner } from "react-bootstrap";
+import { Card, Button, Spinner, Row, Col } from "react-bootstrap";
 import UserInputRadio from "../UserInputRadio.js";
 import UserInputFile from "../UserInputFile.js";
 import { useState } from "react";
@@ -86,11 +86,14 @@ const SignUp = () => {
     } else alert("אנא וודא שכל הפרטים נכונים");
   };
   return (
-    <Card
+    <>
+    <Row style={{marginTop: 150}}>
+      <Col lg={4}>
+      <Card
       style={{
         width: 400,
         padding: 20,
-        margin: 100,
+        marginRight: 200,
         alignItems: "center",
         opacity: "0.95",
       }}
@@ -168,6 +171,15 @@ const SignUp = () => {
         )}
       </Button>
     </Card>
+      </Col>
+      <Col lg={8}>
+      <img style={{width: "100%", marginTop: 100, padding: "6%"}} src="https://i.pinimg.com/originals/a9/0f/43/a90f43ceb1a1f63a68a96c11648e0607.png"></img>
+      </Col>
+    </Row>
+    
+    
+    </>
+    
   );
 };
 

@@ -1,4 +1,4 @@
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Row } from "react-bootstrap";
 import UserInputText from "../UserInputText";
 import { FaUser, FaKey } from "react-icons/fa";
 import { useState, useContext } from "react";
@@ -36,6 +36,7 @@ const SignIn = () => {
   const { setUser, user } = useContext(UserContext);
 
   return (
+    <>
     <Card
       style={{
         width: 400,
@@ -69,6 +70,8 @@ const SignIn = () => {
       </Button>
       <Link to="/signUp">אין לי משתתמש</Link>
     </Card>
+    <Row><img style={{width: "10%" ,margin: "auto", marginTop: 100}} src="https://cdn.pixabay.com/photo/2016/04/17/01/41/globe-1334084_960_720.png"></img></Row>
+    </>
   );
 };
 
